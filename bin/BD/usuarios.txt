@@ -1,0 +1,6 @@
+1,admin,admin
+2,juan,12345
+3,eduardo,abcde
+4,maria,12345
+5,jose,pass
+6,pedro,pass123
