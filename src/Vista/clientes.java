@@ -108,8 +108,11 @@ public class clientes
             System.out.println("    Ingrese el crédito del cliente: ");
             double credito = sc.nextDouble();
 
+            String datos = listaClientes.size() + ","+ nombre + ","+ apellido + ","+ genero + ","+ direccion + ","+ telefono + ","+ celular + ","+ cedula + ","+ fechaActual + ","+ credito + "\n";
+            archivo.guardarArchivo("src\\BD\\clientes.txt", datos);
             listaClientes.add(new Cliente(listaClientes.size(), nombre, apellido, genero, direccion, telefono, celular, cedula, fechaActual, credito));
-        
+            
+
             System.out.println("");
             System.out.println("    Cliente agregado con exito!");
             System.out.println("");

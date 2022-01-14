@@ -17,9 +17,9 @@ public class Cliente extends Persona
 
     public Cliente(){}
 
-    public Cliente(int size, String nombre, String apellido, String genero, String direccion, String telefono, String celular, String cedula, Date fechaActual, double credito)
+    public Cliente(int id, String nombre, String apellido, String genero, String direccion, String telefono, String celular, String cedula, Date fechaActual, double credito)
     {
-        super(size, nombre, apellido, genero, direccion, telefono, celular, cedula, fechaActual);
+        super(id, nombre, apellido, genero, direccion, telefono, celular, cedula, fechaActual);
         this.creditos = credito;
     }
 

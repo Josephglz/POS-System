@@ -165,6 +165,9 @@ public class almacen
             int numCatego = sc.nextInt();
             System.out.println("Ingrese el numero de suplidor del producto: ");
             int numSupli = sc.nextInt();
+            
+            String datos = productos.size() + "," + nombrePro + "," + descripcionPro + "," + precioVenta + "," + precioCompra + "," + cantidadProdu + "," + fechaCompra + "," + fechaVenci + "," + activo + "," + numCatego + "," + numSupli + "\n";
+            archivo.guardarArchivo("src\\BD\\productos.txt", datos);
             productos.add(new Producto(productos.size(), nombrePro, descripcionPro, precioVenta, precioCompra, cantidadProdu, fCompra, fVenc, activo, numCatego, numSupli));
             
             System.out.println("");
@@ -469,6 +472,8 @@ public class almacen
             System.out.println("Ingrese si la categoría esta activa (SI/NO): ");
             String activoCate = sc.next();
             
+            String datos = categorias.size() + ";" + nombreCate + ";" + descripcionCate + ";" + activoCate + "\n";
+            archivo.guardarArchivo("src\\BD\\categorias.txt", datos);
             categorias.add(new Categoria(categorias.size(), nombreCate, descripcionCate, activoCate));
             
             System.out.println("");
