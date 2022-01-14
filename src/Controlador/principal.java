@@ -15,7 +15,6 @@ public class principal
         System.out.println("");
         System.out.println("================================================");
         System.out.println("");
-        System.out.println("");
 
         Login login = new Login(herramienta.cargarUsuarios(archivos.leerArchivo("src\\BD\\usuarios.txt")));
         login.mostrarLogin();
