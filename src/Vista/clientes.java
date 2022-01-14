@@ -4,11 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import Controlador.*;
 import Modelo.*;
 
 public class clientes 
 {
     ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+    cHerramienta herramienta = new cHerramienta();
+    archivoTXT archivo = new archivoTXT();
     Scanner sc = new Scanner(System.in);
 
     public void mostrarMenu()
@@ -85,21 +88,21 @@ public class clientes
             System.out.println("");
             System.out.println("==========      DATOS PERSONALES      ==========");
             System.out.println("    Ingrese el nombre del cliente: ");
-            String nombre = sc.next();
+            String nombre = herramienta.getInputString();
             System.out.println("    Ingrese el apellido del cliente: ");
-            String apellido = sc.next();
+            String apellido = herramienta.getInputString();
             System.out.println("    Ingrese el genero del cliente: ");
-            String genero = sc.next();
+            String genero = herramienta.getInputString();
             System.out.println("    Ingrese la dirección del cliente: ");
-            String direccion = sc.next();
+            String direccion = herramienta.getInputString();
             System.out.println("    Ingrese el teléfono del cliente: ");
-            String telefono = sc.next();
+            String telefono = herramienta.getInputString();
             System.out.println("    Ingrese el celular del cliente: ");
-            String celular = sc.next();
+            String celular = herramienta.getInputString();
             System.out.println("    Ingrese la cedula del cliente: ");
-            String cedula = sc.next();
-            System.out.println("    Ingrese la fecha actual: ");
-            String fecha = sc.next();
+            String cedula = herramienta.getInputString();
+            System.out.println("    Ingrese la fecha actual(dd/MM/yyyy): ");
+            String fecha = herramienta.getInputString();
             Date fechaActual = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
             System.out.println("==========      DATOS CRÉDITO      ==========");
             System.out.println("    Ingrese el crédito del cliente: ");
@@ -153,7 +156,7 @@ public class clientes
                         {
                             System.out.println("Nombre actual: " + listaClientes.get(buscarCliente(idClient)).getNombre());
                             System.out.println("Ingrese el nuevo nombre: ");
-                            String nombre = sc.next();
+                            String nombre = herramienta.getInputString();
                             listaClientes.get(buscarCliente(idClient)).setNombre(nombre);
                             System.out.println("");
                             System.out.println("    Cliente modificado con exito!");
@@ -164,7 +167,7 @@ public class clientes
                         {
                             System.out.println("Apellido actual: " + listaClientes.get(buscarCliente(idClient)).getApellido());
                             System.out.println("Ingrese el nuevo apellido: ");
-                            String apellido = sc.next();
+                            String apellido = herramienta.getInputString();
                             listaClientes.get(buscarCliente(idClient)).setApellido(apellido);
                             System.out.println("");
                             System.out.println("    Cliente modificado con exito!");
@@ -175,7 +178,7 @@ public class clientes
                         {
                             System.out.println("Genero actual: " + listaClientes.get(buscarCliente(idClient)).getGenero());
                             System.out.println("Ingrese el nuevo genero: ");
-                            String genero = sc.next();
+                            String genero = herramienta.getInputString();
                             listaClientes.get(buscarCliente(idClient)).setGenero(genero);
                             System.out.println("");
                             System.out.println("    Cliente modificado con exito!");
@@ -186,7 +189,7 @@ public class clientes
                         {
                             System.out.println("Dirección actual: " + listaClientes.get(buscarCliente(idClient)).getDireccion());
                             System.out.println("Ingrese la nueva dirección: ");
-                            String direccion = sc.next();
+                            String direccion = herramienta.getInputString();
                             listaClientes.get(buscarCliente(idClient)).setDireccion(direccion);
                             System.out.println("");
                             System.out.println("    Cliente modificado con exito!");
@@ -197,7 +200,7 @@ public class clientes
                         {
                             System.out.println("Teléfono actual: " + listaClientes.get(buscarCliente(idClient)).getTelefono());
                             System.out.println("Ingrese el nuevo teléfono: ");
-                            String telefono = sc.next();
+                            String telefono = herramienta.getInputString();
                             listaClientes.get(buscarCliente(idClient)).setTelefono(telefono);
                             System.out.println("");
                             System.out.println("    Cliente modificado con exito!");
@@ -208,7 +211,7 @@ public class clientes
                         {
                             System.out.println("Celular actual: " + listaClientes.get(buscarCliente(idClient)).getCelular());
                             System.out.println("Ingrese el nuevo celular: ");
-                            String celular = sc.next();
+                            String celular = herramienta.getInputString();
                             listaClientes.get(buscarCliente(idClient)).setCelular(celular);
                             System.out.println("");
                             System.out.println("    Cliente modificado con exito!");
@@ -219,7 +222,7 @@ public class clientes
                         {
                             System.out.println("Cédula actual: " + listaClientes.get(buscarCliente(idClient)).getCedula());
                             System.out.println("Ingrese la nueva cédula: ");
-                            String cedula = sc.next();
+                            String cedula = herramienta.getInputString();
                             listaClientes.get(buscarCliente(idClient)).setCedula(cedula);
                             System.out.println("");
                             System.out.println("    Cliente modificado con exito!");
@@ -230,7 +233,7 @@ public class clientes
                         {
                             System.out.println("Fecha actual: " + listaClientes.get(buscarCliente(idClient)).getFechaReg());
                             System.out.println("Ingrese la nueva fecha: ");
-                            String fecha = sc.next();
+                            String fecha = herramienta.getInputString();
                             Date fechaN = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
                             listaClientes.get(buscarCliente(idClient)).setFechaReg(fechaN);
                             System.out.println("");
@@ -272,5 +275,52 @@ public class clientes
             System.out.println("Error: " + e.getMessage());
         }
 
+    }
+
+    public void eliminarCliente()
+    {
+        try
+        {
+            System.out.println("");
+            System.out.println("    Eliminar cliente");
+            System.out.println("");
+            System.out.println("Ingrese el ID del cliente a eliminar: ");
+            int idClient = sc.nextInt();
+            if(buscarCliente(idClient) != -1)
+            {
+                listaClientes.remove(buscarCliente(idClient));
+                System.out.println("");
+                System.out.println("    Cliente eliminado con exito!");
+                System.out.println("");
+            }
+            else
+            {
+                System.out.println("");
+                System.out.println("    El cliente no existe!");
+                System.out.println("");
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void mostrarClientes()
+    {
+        for(int i = 0; i < listaClientes.size(); i++)
+        {
+            System.out.println("");
+            System.out.println("ID: " + listaClientes.get(i).getIdCliente());
+            System.out.println("Nombre: " + listaClientes.get(i).getNombre());
+            System.out.println("Apellido: " + listaClientes.get(i).getApellido());
+            System.out.println("Genero: " + listaClientes.get(i).getGenero());
+            System.out.println("Dirección: " + listaClientes.get(i).getDireccion());
+            System.out.println("Teléfono: " + listaClientes.get(i).getTelefono());
+            System.out.println("Celular: " + listaClientes.get(i).getCelular());
+            System.out.println("Cédula: " + listaClientes.get(i).getCedula());
+            System.out.println("Fecha de registro: " + listaClientes.get(i).getFechaReg());
+            System.out.println("Créditos: " + listaClientes.get(i).getCreditos());
+        }
     }
 }
