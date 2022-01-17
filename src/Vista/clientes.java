@@ -1,11 +1,13 @@
 package Vista;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import Controlador.*;
-import Modelo.*;
+import Controlador.cHerramienta;
+import Controlador.archivoTXT;
+import Modelo.Cliente;
 
 public class clientes 
 {
@@ -13,6 +15,23 @@ public class clientes
     cHerramienta herramienta = new cHerramienta();
     archivoTXT archivo = new archivoTXT();
     Scanner sc = new Scanner(System.in);
+
+    public clientes()
+    {
+        cargarDatos();
+    }
+
+    public void cargarDatos()
+    {
+        try
+        {
+            listaClientes = herramienta.cargarClientes(archivo.leerArchivo("src\\BD\\clientes.txt"));
+        }
+        catch(ParseException e)
+        {
+            System.out.println("Error al cargar los datos de clientes: " + e.getMessage());
+        }
+    }
 
     public void mostrarMenu()
     {
@@ -108,7 +127,7 @@ public class clientes
             System.out.println("    Ingrese el crédito del cliente: ");
             double credito = sc.nextDouble();
 
-            String datos = listaClientes.size() + ","+ nombre + ","+ apellido + ","+ genero + ","+ direccion + ","+ telefono + ","+ celular + ","+ cedula + ","+ fechaActual + ","+ credito + "\n";
+            String datos = listaClientes.size() + ","+ nombre + ","+ apellido + ","+ genero + ","+ direccion + ","+ telefono + ","+ celular + ","+ cedula + ","+ fecha + ","+ credito + "\n";
             archivo.guardarArchivo("src\\BD\\clientes.txt", datos);
             listaClientes.add(new Cliente(listaClientes.size(), nombre, apellido, genero, direccion, telefono, celular, cedula, fechaActual, credito));
             

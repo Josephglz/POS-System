@@ -1,7 +1,7 @@
 package Vista;
 
 import java.util.Scanner;
-import Modelo.*;
+import Modelo.Usuario;
 
 public class home 
 {
@@ -27,9 +27,8 @@ public class home
             System.out.println("    1. Administrar Almacén.");
             System.out.println("    2. Administrar Clientes.");
             System.out.println("    3. Administrar Proveedores.");
-            System.out.println("    4. Generar Venta.");
-            System.out.println("    5. Administrar Facturas.");
-            System.out.println("    6. Salir.");
+            System.out.println("    4. Administrar Ventas.");
+            System.out.println("    5. Salir.");
             System.out.println("");
             System.out.println("    Seleccione una opción: ");
             opc = sc.nextInt();
@@ -48,7 +47,26 @@ public class home
                     Clientes.mostrarMenu();
                     break;
                 }
+                case 3:
+                {
+                    proveedores Proveedores = new proveedores();
+                    Proveedores.mostrarMenu();
+                    break;
+                }
+                case 4:
+                {
+                    venta Venta = new venta(usuario);
+                    Venta.mostrarMenu();
+                    break;
+                }
+                case 5:
+                {
+                    System.out.println("================================================");
+                    System.out.println("                CERRANDO SESIÓN");
+                    System.out.println("================================================");
+                    break;
+                }
             }
-        }while(opc < 6);
+        }while(opc < 5);
     }    
 }

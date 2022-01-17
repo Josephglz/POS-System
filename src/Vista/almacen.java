@@ -8,7 +8,8 @@ import java.util.Scanner;
 
 import Controlador.archivoTXT;
 import Controlador.cHerramienta;
-import Modelo.*;
+import Modelo.Producto;
+import Modelo.Categoria;
 
 public class almacen 
 {

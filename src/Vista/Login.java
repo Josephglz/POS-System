@@ -3,7 +3,7 @@ package Vista;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Modelo.*;
+import Modelo.Usuario;
 
 public class Login
 {
